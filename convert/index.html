@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <title>Converter Trojan/VLESS/VMess → Clash YAML</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Converter to yaml <span>CLASH</span></h1>
+    
+    </header>
+
+    <section class="panel left">
+      <label for="inputLinks">Masukkan link (satu per baris). Gunakan tombol "isi contoh" untuk mencoba :</label>
+      <textarea id="inputLinks" placeholder="Contoh:
+trojan://enAsoMwPVZOd6SduHFQ@bug:443?path=%2Ftrojan&security=tls&host=kiheo.my.id&type=ws&sni=kiheo.my.id#Biznet"></textarea>
+
+      <div class="row controls">
+        <button id="clearBtn" class="muted">Hapus</button>
+        <button id="convertBtn" class="primary">Convert</button>
+        <button id="fillExampleBtn" class="secondary">Isi Contoh</button>
+      </div>
+
+      <div class="options">
+        <div class="option-row">
+          <input type="checkbox" id="useCustomName" />
+          <label for="useCustomName">Gunakan nama custom (override semua nama)</label>
+        </div>
+        <div class="option-row">
+          <input type="text" id="customName" placeholder="Nama custom (contoh: MyProxy)" />
+        </div>
+      </div>
+
+      <div class="domain-section">
+        <div class="domain-header">
+          <strong>Wildcard</strong>
+          <div class="domain-actions">
+            <button id="addDomainBtn" class="small">Tambah wildcard</button>
+            <button id="clearDomainsBtn" class="small muted">Bersihkan</button>
+          </div>
+        </div>
+        <div id="domainList" class="domain-list">
+          <!-- domain rows injected here -->
+        </div>
+        <div class="domain-hint">Masukkan domain yang akan ditempatkan di depan host / sni (mis. <code>kiheo.my.id</code>). Jika lebih dari 1 domain dibuat, hasil akan menduplikasi proxy per domain dengan nama yang menambahkan domain.</div>
+      </div>
+
+      <div id="messages" class="messages" aria-live="polite"></div>
+    </section>
+
+    <section class="panel right">
+      <label for="outputYaml">Hasil Clash YAML:</label>
+      <textarea id="outputYaml" readonly placeholder="Tekan Convert untuk menampilkan YAML"></textarea>
+
+      <div class="row controls">
+        <button id="copyBtn" class="primary">Copy</button>
+        <button id="downloadBtn" class="secondary">Download .yaml</button>
+      </div>
+    </section>
+
+    <div class="social-icons">
+      <a href="https://www.tiktok.com/@kiky_hendry"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://github.com/kiel-p"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.facebook.com/share/1FR9mYBw4w/"><i class="fa-brands fa-facebook"></i></a>
+      <a href="http://instagram.com/kiky_hendry"><i class="fa-brands fa-instagram"></i></a>
+      <footer class="ckk">
+        <small> &copy; 2025 By KIHEO.</small>
+      </footer>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
