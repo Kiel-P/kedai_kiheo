@@ -242,6 +242,9 @@ color: whitesmoke;
     font-size: 3rem;
     margin-bottom: 2.2rem;
   }
+  .social-icons {
+    font-size: 2rem;
+}
 }
 /* hp */
 @media (max-width: 1366px) {
@@ -253,4 +256,48 @@ color: whitesmoke;
   html {
     font-size: 55%;
   }
+}
+
+/* TAMBAHAN */
+
+/* footer */
+footer{
+  text-align: center;
+  width:100%; max-width:1200px; color: rgb(9, 138, 143); font-size:13px; margin-top:-9px}
+.social-icons{
+  text-align: center;
+}
+.social-icons a{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none !important;
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    border: 0.2rem solid #b74b4b;
+    font-size: 1rem;
+    border-radius: 50%;
+   margin: 0.8rem 0.8rem 0.8rem 0;
+   margin-top: -80px;
+    transition: 0.3s ease;
+    color: #b74b4b;
+}
+
+.social-icons a:hover{
+    color: black;
+    transform: scale(1.1) translateY(-5px);
+    transition: all .66s ;
+    background-color: #b74b4b;
+    box-shadow:  0 0 10px #b74b4b;
+}
+.clash {
+    color:var(--danger)
+    
+}
+.clash:hover {
+   color: aquamarine;
+   transform: rotate(2deg);
+   transition: all 0.66s ease;
+   cursor: pointer;
 }
