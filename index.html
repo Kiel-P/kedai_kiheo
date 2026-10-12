@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;1,500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;1,500&display=swap"
       rel="stylesheet"
     />
     <!-- my style -->
@@ -32,20 +32,24 @@
         <a href="#about">Tentang</a>
         <a href="#menu">Paket</a>
         <a href="#kontak">Kontak</a>
-<li class="dropdown">
-  <a href="javascript:void(0)" id="lainToggle" class="dropbtn">
-    Lain-lain
-  </a>
-  <div class="dropdown-content" id="lainMenu">
-    <a href="http://akun.kiheo.my.id/sub">Buat akun</a>
-    <a href="/convert">Convert</a>
-    <a href="/sub-menu/waster.html">Waster</a>
-  </div>
-</li>
-
-
+        <li class="dropdown">
+          <a href="javascript:void(0)" id="lainToggle" class="dropbtn">
+            Lain-lain
+          </a>
+          <div class="dropdown-content" id="lainMenu">
+            <a href="http://akun.kiheo.my.id/sub">Buat akun</a>
+            <a href="/convert">Convert</a>
+            <a href="/sub-menu/waster.html">Waster</a>
+          </div>
+        </li>
       </div>
       <div class="navbar-ex">
+        <!-- ICON TOGGLE TEMA KANAN ATAS -->
+        <button id="themeToggle" class="btn-theme-capsule" aria-label="Toggle Theme">
+          <i data-feather="sun" id="themeIconSun"></i>
+          <i data-feather="moon" id="themeIconMoon"></i>
+        </button>
+
         <a href="#" id="search"><i data-feather="search"></i></a>
         <a href="#" id="keranjang"><i data-feather="shopping-cart"></i></a>
         <a href="#" id="menuham"><i data-feather="menu"></i></a>
