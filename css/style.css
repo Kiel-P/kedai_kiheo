@@ -8,9 +8,9 @@
   --text-color: #000000;
   --border-color: #000000;
   
-  --primary-color: #ffc928; /* Yellow */
-  --secondary-color: #ff6b6b; /* Red */
-  --accent-color: #4ecdc4; /* Teal */
+  --primary-color: #ffc928;
+  --secondary-color: #ff6b6b;
+  --accent-color: #4ecdc4;
   --purple-accent: #a29bfe;
 
   --border-width: 3px;
@@ -18,6 +18,10 @@
   --radius-btn: 50px;
   --shadow-main: 6px 6px 0px var(--border-color);
   --font-main: "Poppins", sans-serif;
+
+  /* Timing Function Smooth Bouncy */
+  --transition-smooth: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  --transition-btn: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 [data-theme="dark"] {
@@ -46,15 +50,26 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Transisi Halus untuk Seluruh Elemen saat Tema Berubah */
+body, 
+.navbar, 
+.conten, 
+.dropdown-content, 
+.social-icons a, 
+.navbar-ex a, 
+.btn-theme-capsule,
+.navbar-nav a {
+  transition: var(--transition-smooth);
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
   padding-top: 100px;
 }
 
 /* ==========================================
-   NAVBAR & TOGGLE TEMA
+   NAVBAR & TOGGLE TEMA SMOOTH
    ========================================== */
 .navbar {
   display: flex;
@@ -77,6 +92,7 @@ body {
   font-weight: 800;
   color: var(--text-color);
   font-style: italic;
+  transition: var(--transition-smooth);
 }
 
 .navbar .logo-nav span {
@@ -90,6 +106,7 @@ body {
   gap: 0.8rem;
 }
 
+/* Tombol Menu Navbar Pro Smooth */
 .navbar .navbar-nav a,
 .navbar .navbar-nav .dropbtn {
   color: var(--text-color);
@@ -100,15 +117,23 @@ body {
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--radius-btn);
   box-shadow: 3px 3px 0px var(--border-color);
-  transition: all 0.15s ease;
+  transition: var(--transition-btn), var(--transition-smooth);
+  cursor: pointer;
+  user-select: none;
 }
 
 .navbar .navbar-nav a:hover,
 .navbar .navbar-nav .dropbtn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px var(--border-color);
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0px var(--border-color);
   background-color: var(--primary-color);
   color: #000;
+}
+
+.navbar .navbar-nav a:active,
+.navbar .navbar-nav .dropbtn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px var(--border-color);
 }
 
 .navbar-ex {
@@ -117,12 +142,13 @@ body {
   gap: 0.5rem;
 }
 
+/* Tombol Icon & Toggle Tema Pro Smooth */
 .navbar-ex a,
 .btn-theme-capsule {
   color: var(--text-color);
   background: var(--bg-card);
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -130,29 +156,59 @@ body {
   border-radius: var(--radius-btn);
   box-shadow: 3px 3px 0px var(--border-color);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: var(--transition-btn), var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
 }
 
 .navbar-ex a:hover,
 .btn-theme-capsule:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px var(--border-color);
+  transform: translate(-3px, -3px) rotate(-3deg);
+  box-shadow: 6px 6px 0px var(--border-color);
   background: var(--secondary-color);
   color: #fff;
 }
 
-/* Toggle tema kapsul kanan atas */
-[data-theme="dark"] #themeIconSun { display: block; color: #ffc928; }
-[data-theme="dark"] #themeIconMoon { display: none; }
-[data-theme="light"] #themeIconSun { display: none; }
-[data-theme="light"] #themeIconMoon { display: block; color: #000; }
+.navbar-ex a:active,
+.btn-theme-capsule:active {
+  transform: translate(1px, 1px) scale(0.95);
+  box-shadow: 2px 2px 0px var(--border-color);
+}
+
+/* Transisi Rotasi Ikon Tema Smooth */
+.btn-theme-capsule svg {
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s ease;
+  position: absolute;
+}
+
+[data-theme="dark"] #themeIconSun {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+  color: #ffc928;
+}
+
+[data-theme="dark"] #themeIconMoon {
+  transform: rotate(-90deg) scale(0);
+  opacity: 0;
+}
+
+[data-theme="light"] #themeIconSun {
+  transform: rotate(90deg) scale(0);
+  opacity: 0;
+}
+
+[data-theme="light"] #themeIconMoon {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+  color: #000;
+}
 
 #menuham {
   display: none;
 }
 
 /* ==========================================
-   DROPDOWN SLIDE
+   DROPDOWN SLIDE SMOOTH
    ========================================== */
 .dropdown {
   position: relative;
@@ -172,8 +228,8 @@ body {
 
   max-height: 0;
   opacity: 0;
-  transform: translateY(-10px);
-  transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.4s ease;
+  transform: translateY(-12px) scale(0.95);
+  transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   pointer-events: none;
   z-index: 99;
 }
@@ -186,6 +242,7 @@ body {
   border: none !important;
   box-shadow: none !important;
   border-bottom: 2px solid var(--border-color) !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
 }
 
 .dropdown-content a:last-child {
@@ -195,17 +252,18 @@ body {
 .dropdown-content a:hover {
   background-color: var(--primary-color) !important;
   color: #000 !important;
+  transform: translateX(4px);
 }
 
 .dropdown-content.show {
   max-height: 300px;
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
 /* ==========================================
-   HERO SECTION (BACKGROUND SEPERTI SEBELUMNYA)
+   HERO SECTION
    ========================================== */
 .hero {
   min-height: 100vh;
@@ -213,9 +271,8 @@ body {
   justify-content: center;
   align-items: center;
   padding: 2rem 5%;
-  margin-top: -100px; /* Menutupi area atas */
+  margin-top: -100px;
 
-  /* Kembali ke Gambar Background Awal dengan Overlay */
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("../img/bgf.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -231,6 +288,7 @@ body {
   padding: 3rem 7%;
   max-width: 60rem;
   z-index: 2;
+  transition: var(--transition-smooth);
 }
 
 .hero .conten h1 {
@@ -238,10 +296,12 @@ body {
   color: var(--text-color);
   line-height: 1.2;
   font-weight: 800;
+  transition: var(--transition-smooth);
 }
 
 .conten h1 span {
   color: var(--text-color);
+  transition: var(--transition-smooth);
 }
 
 .conten h1 .kk {
@@ -259,6 +319,7 @@ body {
   color: var(--text-color);
   font-weight: 500;
   line-height: 1.6;
+  transition: var(--transition-smooth);
 }
 
 .conten .cta {
@@ -272,13 +333,18 @@ body {
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--radius-btn);
   box-shadow: 4px 4px 0px var(--border-color);
-  transition: all 0.15s ease;
+  transition: var(--transition-btn);
 }
 
 .conten .cta:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px var(--border-color);
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px var(--border-color);
   background-color: var(--accent-color);
+}
+
+.conten .cta:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px var(--border-color);
 }
 
 /* ==========================================
@@ -294,6 +360,7 @@ body {
   margin-bottom: 3rem;
   font-weight: 800;
   color: var(--text-color);
+  transition: var(--transition-smooth);
 }
 
 .tentang h2 span {
@@ -318,6 +385,7 @@ body {
   box-shadow: var(--shadow-main);
   overflow: hidden;
   background: var(--purple-accent);
+  transition: var(--transition-smooth);
 }
 
 .tentang .t-img img {
@@ -332,6 +400,7 @@ body {
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-main);
   padding: 2rem;
+  transition: var(--transition-smooth);
 }
 
 .tentang .conten h3 {
@@ -339,6 +408,7 @@ body {
   margin-bottom: 1rem;
   font-weight: 800;
   color: var(--text-color);
+  transition: var(--transition-smooth);
 }
 
 .tentang .conten h3 span {
@@ -351,6 +421,7 @@ body {
   line-height: 1.6;
   font-weight: 500;
   color: var(--text-color);
+  transition: var(--transition-smooth);
 }
 
 /* ==========================================
@@ -365,23 +436,28 @@ body {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   background-color: var(--bg-card);
   border: var(--border-width) solid var(--border-color);
   border-radius: var(--radius-btn);
   box-shadow: 3px 3px 0px var(--border-color);
   font-size: 1.1rem;
   margin: 0 0.3rem 1.5rem;
-  transition: all 0.15s ease;
+  transition: var(--transition-btn), var(--transition-smooth);
   color: var(--text-color);
 }
 
 .social-icons a:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px var(--border-color);
+  transform: translate(-3px, -3px) rotate(5deg);
+  box-shadow: 6px 6px 0px var(--border-color);
   background-color: var(--primary-color);
   color: #000;
+}
+
+.social-icons a:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px var(--border-color);
 }
 
 footer.ckk {
@@ -390,6 +466,7 @@ footer.ckk {
   color: var(--text-color);
   font-size: 14px;
   font-weight: 700;
+  transition: var(--transition-smooth);
 }
 
 /* ==========================================
@@ -413,7 +490,7 @@ footer.ckk {
     border: var(--border-width) solid var(--border-color);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-main);
-    transition: 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .navbar-nav.active {
