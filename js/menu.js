@@ -3,10 +3,10 @@ const menu = document.getElementById("lainMenu");
 
 let isOpen = false;
 let timer = null;
-const DELAY = 50; // 0.5 detik
+const DELAY = 50;
 
-toggleBtn.addEventListener("click", () => {
-  // cegah klik spam
+toggleBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
   if (timer) return;
 
   timer = setTimeout(() => {
@@ -21,7 +21,7 @@ toggleBtn.addEventListener("click", () => {
   }, DELAY);
 });
 
-/* klik di luar menu -> tutup dengan delay */
+/* Klik di luar menu -> tutup */
 document.addEventListener("click", (e) => {
   if (
     isOpen &&
